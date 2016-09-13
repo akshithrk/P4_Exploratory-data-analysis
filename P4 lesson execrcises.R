@@ -33,6 +33,7 @@ table(reddit$employment.status)
 reddit
 str(reddit)
 summary(reddit)
+View(reddit)
 reddit$age.range
 levels(reddit)
 levels(reddit$age.range)
