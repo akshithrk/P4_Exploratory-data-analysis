@@ -23,3 +23,30 @@ install.packages('dplyr')
 library(dplyr)
 install.packages('ggvis')
 library(ggvis)
+reddit <- read.csv('reddit.csv')
+
+#using order function to order the factor variables
+getwd()
+setwd('C:/Users/akshithreddy/Downloads')
+reddit <- read.csv('reddit.csv')
+table(reddit$employment.status)
+reddit
+str(reddit)
+summary(reddit)
+reddit$age.range
+levels(reddit)
+levels(reddit$age.range)
+qplot(data = reddit, x = age.range)
+library(ggplot2)
+levels(reddit$income.range)
+levels(reddit$age.range)
+is.factor(reddit$age.range)
+age.range.order <- ordered(reddit$age.range, levels = c("Under 18", "18-24", "25-34", "35-44", "45-54", "55-64", "65 or Above"))
+reddit$age.range
+age.range.order
+
+# order function for the income.range
+reddit$income.range
+levels(reddit$income.range)
+reddit$income.range <- ordered(reddit$income.range, levels = c("Under $20,000", "$20,000 - $29,999", "$30,000 - $39,999", "$40,000 - $49,999", "$50,000 - $69,999", "$70,000 - $99,999", "$100,000 - $149,999", "$150,000 or more"))
+qplot(reddit$income.range)
