@@ -51,3 +51,16 @@ reddit$income.range
 levels(reddit$income.range)
 reddit$income.range <- ordered(reddit$income.range, levels = c("Under $20,000", "$20,000 - $29,999", "$30,000 - $39,999", "$40,000 - $49,999", "$50,000 - $69,999", "$70,000 - $99,999", "$100,000 - $149,999", "$150,000 or more"))
 qplot(reddit$income.range)
+
+#facebook user data
+getwd()
+setwd('C:/Users/akshithreddy/Downloads')
+list.files()
+facebook <- read.csv('pseudo_facebook.tsv', sep = '\t')
+install.packages('ggplot2')
+library(ggplot2)
+ggplot(facebook)
+ggplot(data = facebook, aes(x = dob_day)) +
+  geom_histogram(binwidth = 1) +
+  scale_x_continuous(breaks = 1:31) +
+  facet_wrap(~dob_month)
