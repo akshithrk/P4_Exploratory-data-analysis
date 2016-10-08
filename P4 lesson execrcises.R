@@ -1,5 +1,5 @@
 getwd()
-setwd('C:/Users/akshithreddy/Downloads')
+setwd('C:/Users/akshi/Downloads')
 states<- read.csv('stateData.csv')
 states
 statesubset <- subset(states, state.region == 1)
@@ -64,3 +64,4 @@ ggplot(data = facebook, aes(x = dob_day)) +
   geom_histogram(binwidth = 1) +
   scale_x_continuous(breaks = 1:31) +
   facet_wrap(~dob_month)
+
