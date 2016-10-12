@@ -54,14 +54,47 @@ qplot(reddit$income.range)
 
 #facebook user data
 getwd()
-setwd('C:/Users/akshithreddy/Downloads')
+setwd('C:/Users/akshi/Downloads')
 list.files()
 facebook <- read.csv('pseudo_facebook.tsv', sep = '\t')
 install.packages('ggplot2')
 library(ggplot2)
-ggplot(facebook)
 ggplot(data = facebook, aes(x = dob_day)) +
   geom_histogram(binwidth = 1) +
   scale_x_continuous(breaks = 1:31) +
   facet_wrap(~dob_month)
+install.packages('Hmisc')
+library(Hmisc)
+summary(facebook$friend_count)
+summarize(facebook$friend_count)
+describe(facebook)
+colnames(facebook)
+qplot(facebook$friend_count)
+ggplot(facebook)
+help("qplot")
+
+qplot(x = facebook$friend_count,
+       data = facebook, xlim = c(0, 1000))
+
+qplot(x = facebook$friend_count, y=facebook$gender,  data = facebook) +
+  scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50))
+
+qplot(x= facebook$friend_count, data = na.omit(facebook),
+      binwidth = 10) +
+  scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) +
+  facet_wrap(~gender)
+
+ggplot(aes(x = facebook$friend_count), data = facebook) +
+  geom_histogram() +
+  scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) +
+  facet_wrap(~gender)
+
+qplot(x= facebook$friend_count, data = facebook, na.omit(facebook$gender)) +
+  scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) +
+  facet_wrap(~gender)
+
+table(facebook$gender)
+by(facebook$friend_count, facebook$gender, summary)
+
+qplot(facebook$tenure, data = facebook, color = 'black', fill = )
 
