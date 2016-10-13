@@ -98,3 +98,10 @@ by(facebook$friend_count, facebook$gender, summary)
 
 qplot(facebook$tenure, data = facebook, color = 'black', fill = )
 
+tenure<-na.omit(facebook$tenure)
+tenure
+ggplot(aes(x = tenure), data = facebook) + 
+  geom_histogram(binwidth = 30, color = 'black', fill = '#099DD9')
+
+ggplot(aes(x = tenure/365), data = facebook) +
+  geom_histogram(binwidth = 0.12, color = 'black', fill = '#099DD9')
