@@ -190,4 +190,3 @@ log
 sqrt
 
 grid.arrange(p1, log, sqrt, ncol = 1)
-
