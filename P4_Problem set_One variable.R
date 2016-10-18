@@ -7,6 +7,7 @@ is.ordered(diamonds)
 is.factor(diamonds)
 str(diamonds)
 
+library(ggplot2)
 qplot(x = diamonds$price)
 
 ggplot(diamonds, aes(x = diamonds$price)) +
@@ -17,3 +18,8 @@ ggplot(diamonds, aes(x = diamonds$price)) +
 summary(diamonds$price)
 describe(diamonds$price >= 15000)
 
+ggplot(diamonds, aes(x = diamonds$price)) +
+  geom_histogram(color = 'red', fill = 'blue', binwidth = 30) +
+  scale_x_continuous(labels = diamonds$dollar, breaks = seq(0, 2000, 250)) +
+  coord_cartesian(c(0, 2000)) +
+  xlab("price") + ylab('count')
