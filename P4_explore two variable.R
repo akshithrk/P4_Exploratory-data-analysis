@@ -1,0 +1,11 @@
+getwd()
+setwd('C:/Users/akshi/Downloads')
+library(rmarkdown)
+library(ggplot2)
+library(dplyr)
+library(ggvis)
+library(Hmisc)
+library(gridExtra)
+
+install.packages('tidyr')
+library(tidyr)
