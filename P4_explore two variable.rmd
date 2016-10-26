@@ -164,6 +164,7 @@ plot <- ggplot(aes(x = age, y = friend_count_mean), data = fb) +
              color = 'yellow') +
   coord_trans(y = 'sqrt') +
   geom_line(stat = 'summary', fun.y = mean)
+
 plot
 
 plot <- plot + geom_line()
