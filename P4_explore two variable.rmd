@@ -6,8 +6,6 @@ library(dplyr)
 library(ggvis)
 library(Hmisc)
 library(gridExtra)
-
-install.packages('tidyr')
 library(tidyr)
 
 Lesson 4
@@ -17,6 +15,8 @@ Lesson 4
 
 ### Scatterplots and Perceived Audience Size
 Notes:
+fb <- read.csv('pseudo_facebook.tsv', sep = '\t')
+fb
 
 ***
 
@@ -24,7 +24,7 @@ Notes:
 Notes:
 
 ```{r Scatterplots}
-
+qplot(x = fb$age, y = fb$friend_count, data = fb)
 ```
 
 ***
@@ -38,6 +38,9 @@ Response:
 Notes:
 
 ```{r ggplot Syntax}
+summary(fb$age)
+ggplot(aes(x = fb$age, y = fb$friend_count), data = fb) + geom_point() +
+  xlim(13, 90)
 
 ```
 
@@ -47,7 +50,13 @@ Notes:
 Notes:
 
 ```{r Overplotting}
+ggplot(aes(x = fb$age, y = fb$friend_count), data = fb) + geom_point() +
+  geom_point(alpha = 1/20) +
+  xlim(13, 90)
 
+ggplot(aes(x = fb$age, y = fb$friend_count), data = fb) + geom_point() +
+  geom_jitter(alpha = 1/20) +
+  xlim(13, 90)
 ```
 
 #### What do you notice in the plot?
@@ -59,6 +68,14 @@ Response:
 Notes:
 
 ```{r Coord_trans()}
+plot <- ggplot(aes(x = fb$age, y = fb$friend_count), data = fb) +
+  geom_point(alpha = 1/20) +
+  xlim(13, 90)
+plot
+p1 <- plot + coord_trans(x = 'sqrt')
+p1
+p2 <- plot + coord_trans(y = 'sqrt')
+p2
 
 ```
 
@@ -76,6 +93,16 @@ Notes:
 Notes:
 
 ```{r Alpha and Jitter}
+plot <- ggplot(aes(x = fb$age, y = fb$friendships_initiated), data = fb)
+
+p1 <- plot + geom_point(alpha = 1/20 ) + xlim(13, 113)
+p1
+p2 <- plot + geom_jitter(alpha = 1/20) + xlim(13, 113)
+p2
+
+help("coord_cartesian")
+p3 <- p1 + coord_cartesian(xlim = c(13, 113))
+p3
 
 ```
 
@@ -90,12 +117,35 @@ Notes:
 Notes:
 
 ```{r Conditional Means}
+help(dplyr)
+age <- fb$age
+age_groups <- group_by(fb, age)
+fb.fc_by_age <- summarise(age_groups)
+fb.fc_by_age
+fb.fc_by_age <- summarise(age_groups,
+                          friend_count_mean = mean(friend_count),
+                          friend_count_median = median(friend_count),
+                          n = n())
+
+fb.fc_by_age
+fb.fc_by_age <- arrange(fb.fc_by_age, age)
+fb.fc_by_age
+
+head(fb.fc_by_age)
 
 ```
 
 Create your plot!
 
 ```{r Conditional Means Plot}
+fb.mean_fc <- mean(fb$friend_count)
+fb.mean_fc
+friend_count_mean = mean(friend_count)
+plot <- ggplot(aes(x = age, y = friend_count_mean), data = fb.fc_by_age)
+p1 <- plot + geom_line()
+p1
+p2 <- plot + geom_point()
+p2
 
 ```
 
@@ -105,6 +155,18 @@ Create your plot!
 Notes:
 
 ```{r Overlaying Summaries with Raw Data}
+friend_count_mean = mean(friend_count)
+friend_count_mean
+plot <- ggplot(aes(x = age, y = friend_count_mean), data = fb) +
+  xlim(13, 113) +
+  geom_point(alpha = 0.05,
+             position = position_jitter(h = 0),
+             color = 'yellow') +
+  coord_trans(y = 'sqrt') +
+  geom_line(stat = 'summary', fun.y = mean)
+plot
+
+plot <- plot + geom_line()
 
 ```
 
