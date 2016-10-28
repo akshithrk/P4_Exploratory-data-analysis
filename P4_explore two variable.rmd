@@ -360,12 +360,13 @@ library(dplyr)
 age_groups <- group_by(fb, age) 
 age_groups
 
-fb.fc_by_age_months <- fb %.%
-  group_by(age_in_months) %.%
+fb.fc_by_age_months <- fb %>%
+  group_by(age_in_months) %>%
   summarise(friend_count_mean = mean(friend_count),
             friend_count_median = median(friend_count),
-            n= n()) %.%
+            n= n()) %>%
   arrange(age_in_months)
+friend_count_mean <- mean(friend_count)
 
 fb.fc_by_age_months
 
@@ -373,6 +374,10 @@ fb.fc_by_age_months
 
 Programming Assignment
 ```{r Programming Assignment}
+
+ggplot(aes(x = age_in_months, y = friend_count_mean), 
+       data = subset(fb.fc_by_age_months, age_in_months <= 72)) +
+  geom_line()
 
 ```
 
@@ -382,6 +387,8 @@ Programming Assignment
 
 ```{r Noise in Conditional Means}
 
+
+
 ```
 
 ***
@@ -390,7 +397,7 @@ Programming Assignment
 Notes:
 
 ```{r Smoothing Conditional Means}
-
+#just add a geom_smooth to the above plots
 ```
 
 ***
