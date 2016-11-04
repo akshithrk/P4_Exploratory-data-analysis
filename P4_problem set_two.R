@@ -34,3 +34,15 @@ colnames(diamonds)
 
 ??by
 by(diamonds$clarity, nrow(diamonds$carat), simplify = T)
+
+carat <- diamonds$carat
+cut <- diamonds$cut
+color <- diamonds$color
+clarity <- diamonds$clarity
+depth <- diamonds$depth
+table <- diamonds$table
+price <- diamonds$price
+x <- diamonds$x
+y <- diamonds$y
+z <- diamonds$z
+
