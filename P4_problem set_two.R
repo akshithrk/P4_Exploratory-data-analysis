@@ -69,3 +69,17 @@ cor.test(price, z, alternative = 'two.sided',
          method = 'pearson', conf.level = 0.95 )
 
 #price vs depth
+
+p2 <- ggplot(aes(x = depth, y = price), data = diamonds) +
+  geom_point()
+
+p2
+
+#adjustments
+
+p2 <- ggplot(aes(x = depth, y = price), data = diamonds) +
+  geom_point(alpha = 1/100) +
+  scale_x_continuous(breaks = seq(min(depth), max(depth), 2),
+                     labels = seq(min(depth), max(depth), 2))
+
+p2
