@@ -114,3 +114,32 @@ p4 <- ggplot(data = diamonds, aes(x = price, y = volume)) +
   geom_point(alpha = 1/20)
 
 p4
+
+count(volume == 0)
+count(diamonds$volume)
+??count
+count(volume)
+
+# correlation btw price and volume
+cor.test(price, volume, 
+         method = 'pearson',
+         alternative = 'two.sided',
+         conf.level = 0.95)
+
+??subset()
+subset <- subset(diamonds, volume = 0 & volume >= 800)
+diamonds$subset <- subset
+subset
+
+colnames(subset)
+subset$price <- subset_price
+subset$volume <- subset_volume
+
+
+
+cor.test(subset_price, subset$volume,
+    method = 'pearson',
+    alternative = 'two.sided',
+    conf.level = 0.95)
+
+with(subset, cor.test(price, volume))
