@@ -1,25 +1,21 @@
 getwd()
 setwd('C:/Users/akshi/Downloads')
-install.packages('rmarkdown')
 library(rmarkdown)
-
-install.packages("ggplot2")
 library(ggplot2)
-
-install.packages('dplyr')
 library(dplyr)
-
-install.packages('ggvis')
 library(ggvis)
-
-install.packages('Hmisc')
 library(Hmisc)
-
-install.packages('gridExtra')
 library(gridExtra)
-
-install.packages('tidyr')
 library(tidyr)
+
+
+install.packages('rmarkdown')
+install.packages("ggplot2")
+install.packages('dplyr')
+install.packages('ggvis')
+install.packages('Hmisc')
+install.packages('gridExtra')
+install.packages('tidyr')
 
 #Lesson 4_problem set: 2
 #========================================================
@@ -105,3 +101,16 @@ p3 <- ggplot(aes(x = carat, y = price), data = diamonds) +
   scale_y_continuous(limits = c(0, quantile(price, 0.99)))
 
 p3
+
+# price vs. volume
+colnames(diamonds)
+
+diamonds$volume <- x * y * z
+volume <- diamonds$volume
+summary(volume)
+describe(volume)
+
+p4 <- ggplot(data = diamonds, aes(x = price, y = volume)) +
+  geom_point(alpha = 1/20)
+
+p4
