@@ -91,4 +91,17 @@ cor.test(depth, price, alternative = 'two.sided',
 
 #price vs. carat
 
+describe(price)
+describe(carat)
 
+top_price <- subset(price, price <= quantile(price, 0.99))
+describe(top_price)
+top_carat <- subset(carat, carat <= quantile(carat, 0.99))
+describe(top_carat)
+
+p3 <- ggplot(aes(x = carat, y = price), data = diamonds) +
+  geom_point(alpha = 1/20) +
+  scale_x_continuous(limits = c(0, quantile(carat, 0.99))) +
+  scale_y_continuous(limits = c(0, quantile(price, 0.99)))
+
+p3
