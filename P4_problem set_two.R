@@ -83,3 +83,12 @@ p2 <- ggplot(aes(x = depth, y = price), data = diamonds) +
                      labels = seq(min(depth), max(depth), 2))
 
 p2
+
+#correlation depth vs price
+
+cor.test(depth, price, alternative = 'two.sided',
+         method = 'pearson', conf.level = 0.95)
+
+#price vs. carat
+
+
