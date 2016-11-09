@@ -164,3 +164,18 @@ diamondsByClarity <- diamonds %>%
             max_price = max(price),
             n = n()) %>%
   arrange(clarity)
+
+#barcharts
+
+# diamonds_mp_by_clarity & diamonds_mp_by_color datasets were provided by 
+# udacity so, following plots p6 & p7 will produce results in the udacity console
+
+p6 <- ggplot(data = diamonds_mp_by_clarity,
+             aes(x = clarity, y = mean_price, fill = clarity)) +
+  geom_bar(stat = 'identity', color = 'black')
+
+p7 <- ggplot(data = diamonds_mp_by_color,
+             aes(x = color, y = mean_price, fill = color)) +
+  geom_bar(stat = 'identity', color = 'black')
+
+grid.arrange(p6, p7)
