@@ -154,3 +154,13 @@ p5 <- ggplot(data = subset_2, aes(x = subset_2$volume, y = subset_2$price)) +
   geom_smooth(method = 'lm', se = T)
 
 p5
+
+#diamonds by clarity
+diamondsByClarity <- diamonds %>%
+  group_by(clarity) %>%
+  summarise(mean_price = mean(price),
+            median_price = median(price),
+            min_price = min(price),
+            max_price = max(price),
+            n = n()) %>%
+  arrange(clarity)
