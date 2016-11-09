@@ -134,7 +134,8 @@ subset
 colnames(subset)
 subset$price <- subset_price
 subset$volume <- subset_volume
-
+subset$volume
+subset_volume
 
 
 cor.test(subset_price, subset$volume,
@@ -143,3 +144,13 @@ cor.test(subset_price, subset$volume,
     conf.level = 0.95)
 
 with(subset, cor.test(price, volume))
+
+subset_2 <- subset %>%
+  filter(subset$volume != 0,
+         subset$volume <= 800)
+
+p5 <- ggplot(data = subset_2, aes(x = subset_2$volume, y = subset_2$price)) +
+  geom_point(alpha = 1/20) +
+  geom_smooth(method = 'lm', se = T)
+
+p5
