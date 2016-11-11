@@ -48,11 +48,19 @@ ggplot(data = subset(fb, !is.na(gender)),
        aes(x = age, y = friend_count)) +
   geom_line(aes(color = gender), stat = 'summary', fun.y = median)
 
+### filter function is used to remove the na values in the gender
+### summarise function removes just one layer of grouping once
+### as we also have the age variable along with the gender i'm adding the 
+### ungroup function to remove both the layers
+### the arrange function will arrange the data frame by age
 fb.fc_by_age_gender <- fb %>%
+  filter(!is.na(gender)) %>%
   group_by(age, gender) %>%
   summarise(mean_friend_count = mean(friend_count),
             median_friend_count = median(friend_count),
-            n = n())
+            n = n()) %>%
+  ungroup() %>%
+  arrange(age)
 
 fb.fc_by_age_gender
   
