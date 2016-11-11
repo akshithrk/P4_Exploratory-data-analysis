@@ -5,6 +5,22 @@ Lesson 5
 Notes:
 
 ***
+### adding the correct libraries
+getwd()
+setwd('C:/Users/akshi/Downloads')
+library(rmarkdown)
+library(ggplot2)
+library(dplyr)
+library(ggvis)
+library(Hmisc)
+library(gridExtra)
+library(tidyr)
+
+fb <- read.csv('pseudo_facebook.tsv', sep = '\t')
+fb
+
+colnames(fb)
+
 
 ### Moira Perceived Audience Size Colored by Age
 Notes:
@@ -13,10 +29,26 @@ Notes:
 
 ### Third Qualitative Variable
 Notes:
+gender <- fb$gender
+age <- fb$age
+friend_count <- fb$friend_count
+
 
 ```{r Third Qualitative Variable}
+### boxplots
+
 ggplot(aes(x = gender, y = age),
-       data = subset(pf, !is.na(gender))) + geom_histogram()
+       data = subset(fb, !is.na(gender))) + geom_boxplot()
+
+ggplot(aes(x = gender, y = age),
+       data = subset(fb, !is.na(gender))) + geom_boxplot() +
+  stat_summary(fun.y = mean, geom = 'point', shape = 4)
+
+ggplot(data = subset(fb, !is.na(gender)),
+       aes(x = age, y = friend_count)) +
+  geom_line(aes(color = gender), stat = 'summary', fun.y = median)
+
+
 ```
 
 ***
