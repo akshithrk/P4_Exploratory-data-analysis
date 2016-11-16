@@ -73,6 +73,12 @@ Notes:
 
 ```{r Plotting Conditional Summaries}
 
+ggplot(data = fb.fc_by_age_gender,
+       aes(x = age, y = median_friend_count)) +
+  geom_line(aes(color = gender), stat = 'summary', fun.y = median)
+
+
+
 ```
 
 ***
