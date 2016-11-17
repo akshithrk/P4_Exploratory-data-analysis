@@ -117,6 +117,20 @@ Notes:
 
 ```{r Ratio Plot}
 
+head(fb.fc_by_age_gender.wide)
+
+colnames(fb.fc_by_age_gender.wide)
+female.wide <- fb.fc_by_age_gender.wide$female
+male.wide <- fb.fc_by_age_gender.wide$male
+
+fb.fc_by_age_gender.wide$ratio <- female.wide/male.wide
+
+colnames(fb.fc_by_age_gender.wide)
+head(fb.fc_by_age_gender.wide)
+
+p1 <- ggplot(data = fb.fc_by_age_gender.wide,
+             aes(x = female.wide, y = male.wide))
+
 ```
 
 ***
