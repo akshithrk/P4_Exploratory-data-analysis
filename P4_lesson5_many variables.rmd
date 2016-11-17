@@ -95,13 +95,18 @@ Notes:
 
 ### Reshaping Data
 Notes:
+#dcast is used because the desired data format is a dataframe
+# we can use acast if the desired data format is an array
 
 ```{r}
 install.packages('reshape2')
 library(reshape2)
 
+fb.fc_by_age_gender.wide <- dcast(fb.fc_by_age_gender,
+                                  age ~ gender,
+                                  value.var = 'median_friend_count')
 
-
+fb.fc_by_age_gender.wide
 ```
 
 
