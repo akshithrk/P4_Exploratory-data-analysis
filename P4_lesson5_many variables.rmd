@@ -120,16 +120,22 @@ Notes:
 head(fb.fc_by_age_gender.wide)
 
 colnames(fb.fc_by_age_gender.wide)
+
 female.wide <- fb.fc_by_age_gender.wide$female
 male.wide <- fb.fc_by_age_gender.wide$male
+age.wide <- fb.fc_by_age_gender.wide$age
 
 fb.fc_by_age_gender.wide$ratio <- female.wide/male.wide
-
+ratio.wide <- fb.fc_by_age_gender.wide$ratio
 colnames(fb.fc_by_age_gender.wide)
 head(fb.fc_by_age_gender.wide)
 
 p1 <- ggplot(data = fb.fc_by_age_gender.wide,
-             aes(x = female.wide, y = male.wide))
+             aes(age.wide, ratio.wide)) +
+               geom_line() +
+               geom_hline(yintercept = 1, linetype = 2, alpha = 0.2)
+
+p1
 
 ```
 
