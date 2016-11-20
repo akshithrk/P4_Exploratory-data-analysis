@@ -146,6 +146,18 @@ Notes:
 
 ```{r Third Quantitative Variable}
 
+head(fb.fc_by_age_gender.wide)
+colnames(fb.fc_by_age_gender)
+colnames(fb)
+head(fb)
+
+tenure <- fb$tenure
+tenure/365
+fb$tenure_in_years <- tenure/365
+colnames(fb)
+head(fb)
+
+
 ```
 
 ***
