@@ -178,6 +178,24 @@ Notes:
 
 ```{r Cut a Variable}
 
+?cut
+c1 <- cut(fb$year_joined, breaks = 2004:2009)
+table(c1)
+c2 <- cut(fb$year_joined, breaks = 2009:2011)
+table(c2)
+c3 <- cut(fb$year_joined, breaks = 2011:2012)
+table(c3)
+c4 <- cut(fb$year_joined, breaks = 2012:2014)
+table(c4)
+
+#to add the individual buckets to the data frame without using the breaks function
+
+fb$year_joined_bucket <- cut(fb$year_joined,
+                             c(2004, 2009, 2011, 2012, 2014))
+
+table(fb$year_joined_bucket)
+
+
 ```
 
 ***
