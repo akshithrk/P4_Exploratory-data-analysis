@@ -205,6 +205,14 @@ Notes:
 
 ```{r Plotting it All Together}
 
+p2 <- ggplot(aes(x = age, y = friend_count),
+                 data = subset(fb, !is.na(fb$year_joined_bucket))) +
+  geom_line(aes(color = fb$year_joined_bucket), 
+            stat = 'summary', 
+            fun.y = median)
+
+p2
+
 ```
 
 ***
