@@ -99,7 +99,7 @@ Notes:
 # we can use acast if the desired data format is an array
 
 ```{r}
-install.packages('reshape2')
+#install.packages('reshape2')
 library(reshape2)
 
 fb.fc_by_age_gender.wide <- dcast(fb.fc_by_age_gender,
@@ -157,6 +157,17 @@ fb$tenure_in_years <- tenure/365
 colnames(fb)
 head(fb)
 
+year_joined <- 2014 - fb$tenure_in_years
+year_joined
+fb$year_joined <- year_joined
+head(fb)
+
+fb$year_joined <- ceiling(year_joined)
+head(fb)
+
+table(fb$year_joined)
+summary(fb$year_joined)
+describe(fb$year_joined)
 
 ```
 
