@@ -222,6 +222,18 @@ Notes:
 
 ```{r Plot the Grand Mean}
 
+p3 <- ggplot(aes(x = age, y = friend_count),
+                 data = subset(fb, !is.na(fb$year_joined_bucket))) +
+  geom_line(aes(color = fb$year_joined_bucket, linetype = 3), 
+            stat = 'summary', 
+            fun.y = mean) +
+  geom_line(stat = 'summary', fun.y = mean, linetype = 3)
+  scale_x_continuous('age', limits = c(0, 100)) +
+  scale_y_continuous('friend_count', limits = c(0, 99001)) +
+  scale_linetype(labels = c("bin 1", "bin 2", "bin 3"))
+
+p3
+
 ```
 
 ***
@@ -230,6 +242,21 @@ Notes:
 Notes:
 
 ```{r Friending Rate}
+
+colnames(fb)
+table(tenure)
+head(tenure)
+summary(tenure)
+describe(tenure>0)
+p4 <- ggplot(aes(x = tenure, y = friend_count),
+             data = subset(fb, tenure > 0)) +
+  geom_point(alpha  = 1/100)
+
+p4
+
+with(subset(fb, tenure > 0),
+     summary(friend_count/tenure))
+
 
 ```
 
