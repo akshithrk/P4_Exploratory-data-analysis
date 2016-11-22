@@ -310,6 +310,7 @@ ggplot(aes(x = 30 * round(tenure / 30), y = friendships_initiated / tenure),
             stat = "summary",
             fun.y = mean)
 
+
 ggplot(aes(x = 90 * round(tenure / 90), y = friendships_initiated / tenure),
        data = subset(pf, tenure > 0)) +
   geom_line(aes(color = year_joined.bucket),
