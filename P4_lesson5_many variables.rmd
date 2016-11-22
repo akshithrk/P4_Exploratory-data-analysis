@@ -270,6 +270,18 @@ What is the median friend rate?
 What is the maximum friend rate?
 
 ```{r Friendships Initiated}
+summary(fb$friendships_initiated)
+describe(fb$friendships_initiated)
+describe(tenure)
+year_joined_bucket
+
+p5 <- ggplot(aes(x = tenure, y = fb$friendships_initiated/tenure),
+             data = subset(fb, tenure>0)) +
+  geom_line(aes(color = fb$year_joined_bucket),
+            stat = 'summary',
+            fun.y = mean)
+
+p5
 
 ```
 
