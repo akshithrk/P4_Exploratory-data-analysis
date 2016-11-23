@@ -369,6 +369,20 @@ p2
 Notes:
 
 ```{r Number of Purchases}
+table(yo)
+table(yo$price)
+?transform
+str(yo)
+head(yo)
+#using transform to create a new variable in the yo data frame
+#yo <- transform(yo, all.purchases = strawberry + blueberry + 
+#            pina.colada + plain + mixed.berry)
+
+#alternative way
+yo$all.purchases <- yo$strawberry + yo$blueberry + 
+            yo$pina.colada + yo$plain + yo$mixed.berry
+
+head(yo)
 
 ```
 
