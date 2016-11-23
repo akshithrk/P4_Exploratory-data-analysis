@@ -291,15 +291,15 @@ p5
 Notes:
 
 ```{r Bias-Variance Tradeoff Revisited}
-
-ggplot(aes(x = tenure, y = friendships_initiated / tenure),
-       data = subset(pf, tenure >= 1)) +
-  geom_line(aes(color = year_joined.bucket),
+colnames(fb)
+ggplot(aes(x = tenure, y = fb$friendships_initiated / tenure),
+       data = subset(fb, tenure >= 1)) +
+  geom_line(aes(color = year_joined_bucket),
             stat = 'summary',
             fun.y = mean)
 
-ggplot(aes(x = 7 * round(tenure / 7), y = friendships_initiated / tenure),
-       data = subset(pf, tenure > 0)) +
+ggplot(aes(x = 7 * round(tenure / 7), y = fb$friendships_initiated / tenure),
+       data = subset(fb, tenure > 0)) +
   geom_line(aes(color = year_joined.bucket),
             stat = "summary",
             fun.y = mean)
@@ -335,6 +335,31 @@ Notes:
 Notes:
 
 ```{r Histograms Revisited}
+getwd()
+list.files()
+?list.files
+list.files(pattern = "\\yogurt")
+
+yo <- read.csv('yogurt.csv')
+str(yo)
+head(yo)
+summary(yo)
+describe(yo)
+
+#the id field is in an int format so changing it to a factor
+#a fields data type can be found from the first column returned by the str #command
+yo$id
+yo$id <- factor(yo$id)
+str(yo)
+colnames(yo)
+
+#histograms
+p1 <- ggplot(aes(x = yo$price), data = yo) +
+  geom_histogram()
+p1
+
+p2 <- qplot(data = yo, x = yo$price, fill = I('#F36450'))
+p2
 
 ```
 
