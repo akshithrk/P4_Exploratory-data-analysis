@@ -410,12 +410,24 @@ p7
 
 ### Sampling Observations
 Notes:
-
+# set seed is used to generate the same random number generator RNG every time 
+# a random sample is generated from the data set
 ***
 
 ### Looking at Samples of Households
 
 ```{r Looking at Sample of Households}
+set.seed(4230)
+sample.ids <- sample(levels(yo$id), 16)
+sample.ids
+
+p8 <- ggplot(aes(x = yo$time, y = yo$price),
+             data = subset(yo, id %in% sample.ids)) +
+  facet_wrap( ~id) +
+  geom_line() +
+  geom_point(aes(size = all.purchases), pch = 1)
+
+p8
 
 ```
 
