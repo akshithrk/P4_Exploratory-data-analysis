@@ -392,6 +392,17 @@ head(yo)
 Notes:
 
 ```{r Prices over Time}
+p6 <- qplot(x = yo$all.purchases, data = yo,
+            binwidth = 1,
+            fill = I('#099DD0')) 
+?qplot
+library('ggplot2')
+p6
+
+p7 <- ggplot(aes(y = yo$price, x = yo$time), data = yo) +
+  geom_jitter(alpha = 0.1, shape = 21 , fill = I('#099DD9'))
+
+p7
 
 ```
 
