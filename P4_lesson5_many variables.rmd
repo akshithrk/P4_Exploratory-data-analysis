@@ -436,6 +436,13 @@ p8 <- ggplot(aes(x = yo$time, y = yo$price),
 
 p8
 
+#custom facet wrap
+
+p8.1 <- ggplot(yo, aes( yo$time, yo$price, fill = yo$id)) +
+  theme(aspect.ratio = 1) +
+  facet_wrap( ~yo$id)
+
+p8.1
 ```
 
 ***
@@ -452,7 +459,22 @@ Notes:
 
 ### Scatterplot Matrix
 Notes:
+#to create a number of plots using more than one variables
+install.packages(GGally)
+?GGally
+theme_set(theme_minimal(20))
+set.seed(1836)
+fb_subset <- fb[, c(2:15)]
+names(fb_subset)
+ggpairs(fb_subset[sample.int(nrow(fb_subset), 1000), ])
+?ggpairs
+??ggpairs
+?correlation
+cor(fb$friendships_initiated, fb$friend_count)
+#0.825
 
+cor(fb$age, fb$mobile_likes)
+#-0.26
 ***
 
 ### Even More Variables
@@ -464,6 +486,8 @@ Notes:
 Notes:
 
 ```{r}
+?nci
+
 nci <- read.table("nci.tsv")
 colnames(nci) <- c(1:64)
 ```
