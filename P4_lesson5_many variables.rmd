@@ -418,6 +418,13 @@ Notes:
 
 ```{r Looking at Sample of Households}
 set.seed(4230)
+head(yo)
+head(yo$id)
+with(yo, yo$id)
+by(yo$id, nrow(yo$id), simplify = T)
+summary(yo$id)
+table(yo$id)
+
 sample.ids <- sample(levels(yo$id), 16)
 sample.ids
 
