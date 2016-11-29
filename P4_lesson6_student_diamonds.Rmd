@@ -19,7 +19,25 @@ Notes:
 ### Scatterplot Review
 
 ```{r Scatterplot Review}
+data(diamonds)
+names(diamonds)
+colnames(diamonds)
 
+p1 <- ggplot(aes(diamonds$carat, y = diamonds$price),
+             data = diamonds) +
+  geom_point()
+
+p1
+p1.1 <- p1 +
+  coord_cartesian(xlim = c(0, quantile(diamonds$carat, 0.99)),
+                  ylim = c(0, quantile(diamonds$price, 0.99)))
+p1.1
+p1.2 <- p1.1 +
+  stat_smooth(method = 'lm')
+p1.2
+
+#showing three plots in a row
+grid.arrange(p1, p1.1, p1.2)
 ```
 
 ***
