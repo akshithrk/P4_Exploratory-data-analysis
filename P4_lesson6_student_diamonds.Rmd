@@ -25,13 +25,17 @@ colnames(diamonds)
 
 p1 <- ggplot(aes(diamonds$carat, y = diamonds$price),
              data = diamonds) +
-  geom_point()
+  geom_point(fill = I('#E56810'), color = I('blue'), shape = 21)
 
 p1
+
+#using quantile function to eliminate the top 1 percent of the data
 p1.1 <- p1 +
   coord_cartesian(xlim = c(0, quantile(diamonds$carat, 0.99)),
                   ylim = c(0, quantile(diamonds$price, 0.99)))
 p1.1
+
+#stat_smooth function to add a linear regression model to represent the data
 p1.2 <- p1.1 +
   stat_smooth(method = 'lm')
 p1.2
