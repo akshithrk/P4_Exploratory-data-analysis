@@ -2,12 +2,19 @@ Lesson 6
 ========================================================
 getwd()
 setwd('C:/Users/akshi/Downloads')
+#install.packages('rmarkdown')
 library(rmarkdown)
+#install.packages('ggplot2')
 library(ggplot2)
+#install.packages('dplyr')
 library(dplyr)
+#install.packages('ggvis')
 library(ggvis)
+#install.packages('Hmisc')
 library(Hmisc)
+#install.packages('gridExtra')
 library(gridExtra)
+#install.packages('tidyr')
 library(tidyr)
 
 
@@ -55,7 +62,7 @@ Response:
 Notes:
 
 #### A diamonds is
-
+# forever
 
 ***
 
@@ -69,14 +76,19 @@ Notes:
 
 ```{r ggpairs Function}
 # install these if necessary
-install.packages('GGally')
-install.packages('scales')
-install.packages('memisc')
-install.packages('lattice')
-install.packages('MASS')
-install.packages('car')
-install.packages('reshape')
-install.packages('plyr')
+#Ggally for ggpairs
+#install.packages('GGally')
+#install.packages('scales')
+#memisc to summarise the linear regression
+#install.packages('memisc')
+#install.packages('lattice')
+#install.packages('MASS')
+#car to recode variables
+#install.packages('car')
+#to reshape and wrangle the data
+#install.packages('reshape')
+# plyr to create interesting summaries of the data
+#install.packages('plyr')
 
 # load the ggplot graphics package and the others
 library(ggplot2)
@@ -90,6 +102,7 @@ diamond_samp <- diamonds[sample(1:length(diamonds$price), 10000), ]
 ggpairs(diamond_samp, 
         lower = list(continuous = wrap("points", shape = I('.'))), 
         upper = list(combo = wrap("box", outlier.shape = I('.'))))
+
 ```
 
 What are some things you notice in the ggpairs output?
