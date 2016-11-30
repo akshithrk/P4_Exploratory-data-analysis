@@ -114,7 +114,20 @@ Response:
 Notes:
 
 ```{r The Demand of Diamonds}
+p1 <- ggplot(data = diamonds,
+             aes(x = diamonds$price)) +
+  geom_histogram(fill = I('#F00001'), binwidth = 100) +
+  ggtitle('Price')
+p1
 
+p2 <- ggplot(data = diamonds,
+             aes(x = diamonds$price)) +
+  geom_histogram(fill = I('#F00001'), binwidth = 0.01) + 
+  scale_x_log10() +
+  ggtitle('Price(Log 10)')
+p2
+
+grid.arrange(p1, p2, nrow = 1)
 ```
 
 ***
