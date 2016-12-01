@@ -351,6 +351,7 @@ Response:
 Notes:
 
 ```{r A Bigger, Better Data Set}
+
 #install.packages('bitops')
 #install.packages('RCurl')
 library('bitops')
