@@ -376,6 +376,7 @@ https://github.com/solomonm/diamonds-data
 Notes:
 
 ```{r Building a Model Using the Big Diamonds Data Set}
+
 m1 <- lm(I(log(BigDiamonds$price)) ~ I(BigDiamonds$carat^(1/3)), data = BigDiamonds$price)
 m2 <- lm(m1 , ~ . + BigDiamonds$cut)
 m3 <- lm(m2 , ~ . + BigDiamonds$Color)
