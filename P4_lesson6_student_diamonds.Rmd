@@ -359,17 +359,19 @@ Notes:
 library('bitops')
 library('RCurl')
 
-diamondsurl = getBinaryURL("https://raw.github.com/solomonm/diamonds-data/master/BigDiamonds.Rda")
-load(rawConnection(diamondsurl))
-getwd()
-list.files()
-BigDiamonds <- load("BigDiamonds.Rda")
-colnames(BigDiamonds)
-head(BigDiamonds)
-head(sort(table(BigDiamonds), decreasing =T))
-table(BigDiamonds)
-summary(BigDiamonds)
-describe(BigDiamonds)
+#diamondsurl = getBinaryURL("https://raw.github.com/solomonm/diamonds-data/master/BigDiamonds.Rda")
+#load(rawConnection(diamondsurl))
+diamondsurl = "https://raw.github.com/solomonm/diamonds-data/master/BigDiamonds.Rda"
+load(url(diamondsurl))
+#getwd()
+#list.files()
+#BigDiamonds <- load("BigDiamonds.Rda")
+#colnames(BigDiamonds)
+#head(BigDiamonds)
+#head(sort(table(BigDiamonds), decreasing =T))
+#table(BigDiamonds)
+#summary(BigDiamonds)
+#describe(BigDiamonds)
 ```
 
 The code used to obtain the data is available here:
@@ -380,12 +382,16 @@ Notes:
 
 ```{r Building a Model Using the Big Diamonds Data Set}
 
-m1 <- lm(I(log(BigDiamonds$price)) ~ I(BigDiamonds$carat^(1/3)), data = BigDiamonds$price)
-m2 <- lm(m1 , ~ . + BigDiamonds$cut)
-m3 <- lm(m2 , ~ . + BigDiamonds$Color)
-m4 <- lm(m3 , ~ . + BigDiamonds$Clarity)
-m5 <- lm(m4 , ~ . + BigDiamonds$Carat)
+#m1 <- lm(I(log(price)) ~ I(carat^(1/3)), data = diamondsbig)
+#limiting the dataset by the limiting the features to price < 100000 and diamonds having GIA certification
+colnames(diamondsbig)
 
+m1 <- lm(I(log(price)) ~ I(carat^(1/3)), data = diamondsbig[diamondsbig$price <= 10000 & diamondsbig$cert == "GIA",])
+m2 <- update(m1, ~ . + cut)
+m3 <- update(m2, ~ . + color)
+m4 <- update(m3, ~ . + clarity)
+m5 <- update(m4, ~ . + carat)
+mtable(m1, m2, m3, m4, m5)
 ```
 
 
@@ -398,10 +404,16 @@ Round 1.00 Very Good I VS1 $5,601
 
 ```{r}
 #Be sure you’ve loaded the library memisc and have m5 saved as an object in your workspace.
-thisDiamond = data.frame(carat = 1.00, cut = "V.Good",
+library(memisc)
+
+thisDiamond == data.frame(carat = 1.00, cut = "V.Good",
                          color = "I", clarity="VS1")
+summary(thisDiamond)
+
 modelEstimate = predict(m5, newdata = thisDiamond,
                         interval="prediction", level = .95)
+
+exp(modelEstimate)
 ```
 
 Evaluate how well the model predicts the BlueNile diamond's price. Think about the fitted point estimate as well as the 95% CI.
