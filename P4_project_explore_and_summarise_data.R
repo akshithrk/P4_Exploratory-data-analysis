@@ -13,12 +13,14 @@ data <- read.csv('wineQualityReds.csv')
 #libraries
 library(rmarkdown)
 library(ggplot2)
+#install.packages('xlsx')
 library(xlsx)
-library(rJava)
+#library(rJava)
 library(dplyr)
 library(ggvis)
 library(Hmisc)
 library(gridExtra)
+library(tidyr)
 
 #eda
 colnames(data)
