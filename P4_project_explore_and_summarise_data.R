@@ -21,6 +21,8 @@ library(ggvis)
 library(Hmisc)
 library(gridExtra)
 library(tidyr)
+#install.packages('psych')
+library(psych)
 
 #exploring dataset
 colnames(data)
@@ -56,6 +58,20 @@ x.log.plot <- ggplot(data = data, aes(x = x.log)) +
   geom_histogram(binwidth = 0.1, color = I('black'), fill = I('#099DD9')) + 
   scale_x_continuous(breaks = seq(0, 5, 1), limits = c(0, 3.5)) 
 
+#considering response variable as quality
+summary(quality)
+table(quality)
+describe(quality)
+
+#checking correlation  quality & alcohol
+cor.test(quality, alcohol,
+         method = 'pearson',
+         conf.level = 0.95)
+#0.4761
+
+with(data, cor.test(quality, alcohol),
+     method = 'pearson')
+#0.4761
 
 
 
