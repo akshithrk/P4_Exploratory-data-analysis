@@ -29,6 +29,20 @@ colnames(data)
 summary(data)
 str(data)
 
+x <- data$X
+fixed.acidity <- data$fixed.acidity
+volatile.acidity <- data$volatile.acidity
+citric.acid <- data$citric.acid
+residual.sugar <- data$residual.sugar
+chlorides <- data$chlorides
+free.sulphur.dioxide <- data$free.sulphur.dioxide
+total.sulphur.dioxide <- data$total.sulphur.dioxide
+density <- data$density
+pH <- data$pH
+sulphates <- data$sulphates
+alcohol <- data$alcohol
+quality <- data$quality
+
 #visualising data
 qplot(data = data, x = data$X)
 
@@ -38,9 +52,11 @@ ggplot(data = data, aes(x = data$X)) +
 
 x.log <- log10(data$X + 1)
 qplot(data = data, x = x.log)
-ggplot(data = data, aes(x = x.log)) +
-  geom_histogram(binwidth = 0.1, color = I('black'), fill = I('#099DD9')) +
+x.log.plot <- ggplot(data = data, aes(x = x.log)) + 
+  geom_histogram(binwidth = 0.1, color = I('black'), fill = I('#099DD9')) + 
   scale_x_continuous(breaks = seq(0, 5, 1), limits = c(0, 3.5)) 
+
+
 
 
 ```{r setup, include=FALSE}
