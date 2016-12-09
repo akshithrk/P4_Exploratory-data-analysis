@@ -406,7 +406,7 @@ Round 1.00 Very Good I VS1 $5,601
 #Be sure you’ve loaded the library memisc and have m5 saved as an object in your workspace.
 library(memisc)
 
-thisDiamond == data.frame(carat = 1.00, cut = "V.Good",
+thisDiamond = data.frame(carat = 1.00, cut = "V.Good",
                          color = "I", clarity="VS1")
 summary(thisDiamond)
 
