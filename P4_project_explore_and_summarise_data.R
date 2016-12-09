@@ -31,7 +31,7 @@ colnames(data)
 summary(data)
 str(data)
 
-x <- data$X
+X <- data$X
 fixed.acidity <- data$fixed.acidity
 volatile.acidity <- data$volatile.acidity
 citric.acid <- data$citric.acid
@@ -81,8 +81,8 @@ ggplot(data = data, aes(x= quality, y = alcohol)) +
 #little correlation found between wine quality and higher alcohol content
 
 str(data)
-summary(x)
-describe(x)
+summary(X)
+describe(X)
 
 cor.test(quality, sulphates,
          method = 'pearson')
@@ -126,9 +126,32 @@ cor.test(quality, fixed.acidity,
          method = 'pearson')
 #0.124
 
-cor.test(quality, x,
+cor.test(quality, X,
          method = 'pearson')
 #0.6645
+sdf
+"
+thus based on the correlation test
+volatile.acidity = -0.3905
+pH = -0.057
+chlorides = -0.1289
+density = -0.174
+residual.sugar = 0.0137
+fixed.acidity = 0.124
+citric.acid = 0.2263
+sulphates = 0.251
+X = 0.6645
+
+top 3: 
+citric.acid = 0.2263
+sulphates = 0.251
+X = 0.6645
+
+bottom 3:
+volatile.acidity = -0.3905
+pH = -0.057
+chlorides = -0.1289
+"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
