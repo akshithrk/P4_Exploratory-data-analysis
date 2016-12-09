@@ -22,8 +22,26 @@ library(Hmisc)
 library(gridExtra)
 library(tidyr)
 
-#eda
+#exploring dataset
 colnames(data)
+# 13 attributes in the data set
+
+summary(data)
+str(data)
+
+#visualising data
+qplot(data = data, x = data$X)
+
+ggplot(data = data, aes(x = data$X)) +
+  geom_histogram(binwidth = 30, color = I('black'), fill = I('#099DD9')) +
+  scale_x_continuous(breaks = seq(0, 1600, 100), limits = c(0, 1550)) 
+
+x.log <- log10(data$X + 1)
+qplot(data = data, x = x.log)
+ggplot(data = data, aes(x = x.log)) +
+  geom_histogram(binwidth = 0.1, color = I('black'), fill = I('#099DD9')) +
+  scale_x_continuous(breaks = seq(0, 5, 1), limits = c(0, 3.5)) 
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
