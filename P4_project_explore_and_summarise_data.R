@@ -80,6 +80,56 @@ ggplot(data = data, aes(x= quality, y = alcohol)) +
 
 #little correlation found between wine quality and higher alcohol content
 
+str(data)
+summary(x)
+describe(x)
+
+cor.test(quality, sulphates,
+         method = 'pearson')
+#0.251
+
+cor.test(quality, pH,
+         method = 'pearson')
+#-0.057
+
+cor.test(quality, density,
+         method = 'pearson')
+#-0.174
+
+cor.test(quality, total.sulphur.dioxide,
+         method = 'pearson')
+
+summary(total.sulphur.dioxide)
+describe(total.sulphur.dioxide)
+table(total.sulphur.dioxide)
+head(total.sulphur.dioxide)
+total.sulphur.dioxide
+str(total.sulphur.dioxide)
+
+cor.test(quality, chlorides,
+         method = 'pearson')
+#-0.1289
+
+cor.test(quality, residual.sugar,
+         method = 'pearson')
+#0.0137
+
+cor.test(quality, citric.acid,
+         method = 'pearson')
+#0.2263
+
+cor.test(quality, volatile.acidity,
+         method = 'pearson')
+#-0.3905
+
+cor.test(quality, fixed.acidity,
+         method = 'pearson')
+#0.124
+
+cor.test(quality, x,
+         method = 'pearson')
+#0.6645
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
