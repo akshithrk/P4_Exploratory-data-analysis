@@ -73,7 +73,12 @@ with(data, cor.test(quality, alcohol),
      method = 'pearson')
 #0.4761
 
+ggplot(data = data, aes(x= quality, y = alcohol)) +
+  geom_point() +
+  scale_y_continuous(breaks = seq(0, 15, 1), limits = c(8, 15)) +
+  geom_smooth(method = 'lm', color = 'blue')
 
+#little correlation found between wine quality and higher alcohol content
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
