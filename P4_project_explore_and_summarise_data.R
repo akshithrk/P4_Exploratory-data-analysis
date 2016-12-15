@@ -6,20 +6,27 @@ output: html_document
 ---
 #read file
 getwd()
-setwd('C:/Users/akshi/Downloads')
+#setwd('C:/Users/akshi/Downloads')
+# setting working directory for the cloned repository
+setwd('C:/Users/ch186802/Downloads')
 list.files(pattern = 'csv')
 data <- read.csv('wineQualityReds.csv')
 
 #libraries
+#install.packages('rmarkdown')
 library(rmarkdown)
+#install.packages('ggplot2')
 library(ggplot2)
 #install.packages('xlsx')
 library(xlsx)
-#library(rJava)
+#install.packages('rJava')
+library(rJava)
 library(dplyr)
+#install.packages('ggvis')
 library(ggvis)
 library(Hmisc)
 library(gridExtra)
+#install.packages('tidyr')
 library(tidyr)
 #install.packages('psych')
 library(psych)
@@ -152,6 +159,8 @@ volatile.acidity = -0.3905
 pH = -0.057
 chlorides = -0.1289
 "
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
