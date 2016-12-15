@@ -4,6 +4,16 @@ author: "akshith kandakatla"
 date: "December 8, 2016"
 output: html_document
 ---
+  
+---
+References:
+  Udacity@Project descriptions: https://github.com/akshithrk/Project-Descriptions-for-Review/blob/master/Data-Analyst/Explore%20and%20Summarize%20Data.md
+  Vishnu Priya: http://htmlpreview.github.io/?https://github.com/vishnupriya123/Analysis/blob/master/wines_analysis.html
+  Casaretto: https://github.com/pcasaretto/udacity-eda-project/blob/master/wine.Rmd
+  Allan Breyes: https://github.com/allanbreyes/udacity-data-science/blob/master/p3/submission.Rmd
+  Key Manesh: https://github.com/keymanesh/Udacity--Data-Analysis-with-R
+  Daria@Rpubs: https://rpubs.com/Daria/57835
+---
 #read file
 getwd()
 #setwd('C:/Users/akshi/Downloads')
@@ -159,6 +169,47 @@ volatile.acidity = -0.3905
 pH = -0.057
 chlorides = -0.1289
 "
+#checking the covariance of all the variables against each other
+#top - 3
+data_top3 <- subset(data, select = c(citric.acid, sulphates, X))
+cov(data_top3)
+
+"
+             citric.acid   sulphates             X
+citric.acid   0.03794748  0.01032771    -13.811433
+sulphates     0.01032771  0.02873262     -9.807459
+X           -13.81143304 -9.80745932 213200.000000
+"
+
+cov(data)
+cor(data)
+
+#correlation between quality and the other features
+"
+                         quality
+X                     0.06645261
+fixed.acidity         0.12405165
+volatile.acidity     -0.39055778
+citric.acid           0.22637251
+residual.sugar        0.01373164
+chlorides            -0.12890656
+free.sulfur.dioxide  -0.05065606
+total.sulfur.dioxide -0.18510029
+density              -0.17491923
+pH                   -0.05773139
+sulphates             0.25139708
+alcohol               0.47616632
+quality               1.00000000
+"
+
+"
+assuming good quality is quality >= 7 and
+bad quality <= 4
+"
+"
+creating plots based on the above correlation values
+"
+
 
 
 
