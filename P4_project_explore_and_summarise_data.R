@@ -185,7 +185,8 @@ X           -13.81143304 -9.80745932 213200.000000
 cov(data)
 cor(data)
 
-#correlation between quality and the other features
+#correlation between response variable(quality) and the other features
+
 "
                          quality
 X                     0.06645261
@@ -204,12 +205,13 @@ quality               1.00000000
 "
 
 "
-assuming good quality is quality >= 7 and
+limiting data set by assuming good quality is quality >= 7 and
 bad quality <= 4
 "
-"
-creating plots based on the above correlation values
-"
+
+
+#creating plots based on the above correlation values
+
 
 
 
