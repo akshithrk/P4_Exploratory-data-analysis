@@ -16,9 +16,10 @@ References:
 ---
 #read file
 getwd()
-#setwd('C:/Users/akshi/Downloads')
+  
+setwd('C:/Users/akshi/Downloads')
 # setting working directory for the cloned repository
-setwd('C:/Users/ch186802/Downloads')
+#setwd('C:/Users/ch186802/Downloads')
 list.files(pattern = 'csv')
 data <- read.csv('wineQualityReds.csv')
 
